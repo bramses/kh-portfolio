@@ -1,35 +1,75 @@
 <html>
-    <head>
-        <script src="./anime.min.js"></script>
-        <link rel="stylesheet" href="./styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    </head>
-    <body>
-        <div id="big-title">
-            <h1>BramseS</h1>
-        </div>  
-        <div id="menu">
-            <div class='game-line'>
-                <div class='select-box'></div>
-                <h2 class="title-option">P o r t f o l i o</h2>
-            </div>
-            <div class='game-line'>
-                <div class='select-box'></div>
-                <h2 class="title-option">R e s u m e</h2>
-            </div>
-            <div class='game-line'>
-                <div class='select-box'></div>
-                <h2 class="title-option">N e w s l e t t e r</h2>
-            </div>
+
+<head>
+    <script src="./anime.min.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <audio>
+        <source src="hoversound-mp3.mp3">
+        </source>
+        Your browser isn't invited for super fun audio time.
+    </audio>
+    <div id="big-title">
+        <h1>BramseS</h1>
+    </div>
+    <div id="menu">
+        <div class='game-line'>
+            <div class='select-box'></div>
+            <h2 class="title-option">P o r t f o l i o</h2>
         </div>
-        <script>
-            anime({
+        <div class='game-line'>
+            <div class='select-box'></div>
+            <h2 class="title-option">R e s u m e</h2>
+        </div>
+        <div class='game-line'>
+            <div class='select-box'></div>
+            <h2 class="title-option">N e w s l e t t e r</h2>
+        </div>
+    </div>
+    <script>
+
+        var tl = anime.timeline({
+            easing: 'easeOutExpo',
+        });
+
+        tl
+            .add({
+                targets: '#big-title',
+                opacity: ['0%', '100%'],
+                duration: 1100,
+                easing: 'linear'
+            })
+            .add({
                 targets: '.game-line',
                 translateX: 50,
                 opacity: ['0%', '100%'],
                 duration: 4000,
                 delay: anime.stagger(100)
+            })
+
+        var audio = document.getElementsByTagName("audio")[0];
+
+        for (const element of document.getElementsByClassName("select-box")) {
+            console.log(element);
+            element.addEventListener("mouseenter", function () {
+                play();
             });
-        </script>
-    </body>
+        }
+
+
+        function play() {
+            var audio = document.getElementsByTagName("audio")[0];
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.currentTime = 0
+            }
+        }
+
+    </script>
+</body>
+
 </html>
