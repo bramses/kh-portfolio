@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="./anime.min.js"></script>
+        <link rel="stylesheet" href="./styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    </head>
+    <body>
+        <div id="big-title">
+            <h1>BramseS</h1>
+        </div>  
+        <div id="menu">
+            <div class='game-line'>
+                <div class='select-box'></div>
+                <h2 class="title-option">P o r t f o l i o</h2>
+            </div>
+            <div class='game-line'>
+                <div class='select-box'></div>
+                <h2 class="title-option">R e s u m e</h2>
+            </div>
+            <div class='game-line'>
+                <div class='select-box'></div>
+                <h2 class="title-option">N e w s l e t t e r</h2>
+            </div>
+        </div>
+        <script>
+            anime({
+                targets: '.game-line',
+                translateX: 50,
+                opacity: ['0%', '100%'],
+                duration: 4000,
+                delay: anime.stagger(100)
+            });
+        </script>
+    </body>
+</html>

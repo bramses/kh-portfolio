@@ -1,0 +1,65 @@
+#menu {
+    bottom: 30px;
+    position: absolute;
+    font-family: KHMenu;
+}
+
+@font-face { font-family: KHMenu; src: url('kh2menu.TTF'); } 
+@font-face { font-family: KHTitle; src: url('khtitle.TTF'); } 
+
+
+.select-box {
+    border: 1px solid #000;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.select-box:hover {
+    border: 10px solid #000;
+    width: 30px;
+    height: 30px;
+    background-color: orange;
+    display: inline-block;
+}
+
+.title-option {
+    display: inline-block;
+    text-align: center;
+}
+
+.game-line {
+    width: 100vw;
+}
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+@media (min-width: 1px) and (max-width: 400px) {
+    #big-title {
+        top: 0px;
+        left: 0px;
+        color: red;
+        font-family: KHTitle;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 8000px) {
+    #big-title {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        font-family: KHTitle;
+        font-size: 5em;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    body {
+      background-color: lightgreen;
+    }
+  }
