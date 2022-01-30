@@ -5,30 +5,54 @@
     <link rel="stylesheet" href="./styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-
 <body>
-    <audio>
-        <source src="hoversound-mp3.mp3">
-        </source>
-        Your browser isn't Dearly Beloved.
-    </audio>
-    <div id="big-title">
-        <h1>BramseS</h1>
+    <p id="error-msg">
+        Please view this on a computer. Min dimension: <span id="min-dim">1105x700px</span>
+    </p>
+    <div id="container">
+        
+        <audio>
+            <source id="hoveraudio" src="hoversound-mp3.mp3">
+            </source>
+            Your browser isn't Dearly Beloved.
+        </audio>
+        <audio>
+            <source src="khwaves.mp3">
+            </source>
+            Your browser isn't Dearly Beloved.
+        </audio>
+        <audio>
+            <source src="kh-select-sound.mp3">
+            </source>
+            Your browser isn't Dearly Beloved.
+        </audio>
+        <div id="heart-loader">
+            <div class="heartimg">
+                <img src="khheart.png" id="khheart">
+            </div>
+            <div id="big-title">
+                <h1>BramseS</h1>
+            </div>
+        </div>
+        <button id="start-button" onclick="start()">Play Audio</button>
+        <div id="menu">
+            <div class='game-line' onclick="openurl('portfolio')">
+                <div class='select-box'></div>
+                <h2 class="title-option">P o r t f o l i o</h2>
+            </div>
+            <div class='game-line' onclick="openurl('newsletter')">
+                <div class='select-box'></div>
+                <h2 class="title-option">N e w s l e t t e r</h2>
+            </div>
+            <div class='game-line' onclick="openurl('repo')">
+                <div class='select-box'></div>
+                <h2 class="title-option">G i t h u b  R e p o</h2>
+            </div>
+        </div>
+        
+        <div class="image-blurred-edge"></div>
     </div>
-    <div id="menu">
-        <div class='game-line'>
-            <div class='select-box'></div>
-            <h2 class="title-option">P o r t f o l i o</h2>
-        </div>
-        <div class='game-line'>
-            <div class='select-box'></div>
-            <h2 class="title-option">R e s u m e</h2>
-        </div>
-        <div class='game-line'>
-            <div class='select-box'></div>
-            <h2 class="title-option">N e w s l e t t e r</h2>
-        </div>
-    </div>
+
     <script>
 
         var tl = anime.timeline({
@@ -37,7 +61,13 @@
 
         tl
             .add({
-                targets: '#big-title',
+                targets: '.image-blurred-edge',
+                opacity: ['0%', '100%'],
+                duration: 1100,
+                easing: 'linear'
+            })
+            .add({
+                targets: '#heart-loader',
                 opacity: ['0%', '100%'],
                 duration: 1100,
                 easing: 'linear'
@@ -50,20 +80,48 @@
                 delay: anime.stagger(100)
             })
 
+        var allowAudio = false;
+
         var audio = document.getElementsByTagName("audio")[0];
+        var bgMusic = document.getElementsByTagName("audio")[1];
+        var selectAudio = document.getElementsByTagName("audio")[2];
 
         for (const element of document.getElementsByClassName("game-line")) {
             element.addEventListener("mouseenter", function () {
                 play();
                 element.getElementsByClassName("select-box")[0].classList.add("select-box-hover");
-                // element.classList.add("selected");
+                element.classList.add("game-hover");
             });
             element.addEventListener("mouseleave", function () {
-                // element.classList.remove("selected");
+                element.classList.remove("game-hover");
                 element.getElementsByClassName("select-box")[0].classList.remove("select-box-hover");
             });
         }
 
+        function start () {
+            bgMusic.play();
+            bgMusic.loop = true;
+            bgMusic.volume = 0.75
+        }
+
+        function openurl (url) {
+            switch (url) {
+                case "repo":
+                    window.open("https://github.com/bramses/kh-portfolio", "_blank");
+                    selectAudio.play();
+                    break;
+                case "newsletter":
+                    window.open("https://bram.substack.com/", "_blank");
+                    selectAudio.play();
+                    break;
+                case "portfolio":
+                    window.open("https://www.bramadams.dev/", "_blank");
+                    selectAudio.play();
+                    break;
+                
+               
+            }
+        }
 
         function play() {
             var audio = document.getElementsByTagName("audio")[0];
