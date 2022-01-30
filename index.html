@@ -10,7 +10,7 @@
     <audio>
         <source src="hoversound-mp3.mp3">
         </source>
-        Your browser isn't invited for super fun audio time.
+        Your browser isn't Dearly Beloved.
     </audio>
     <div id="big-title">
         <h1>BramseS</h1>
@@ -52,10 +52,15 @@
 
         var audio = document.getElementsByTagName("audio")[0];
 
-        for (const element of document.getElementsByClassName("select-box")) {
-            console.log(element);
+        for (const element of document.getElementsByClassName("game-line")) {
             element.addEventListener("mouseenter", function () {
                 play();
+                element.getElementsByClassName("select-box")[0].classList.add("select-box-hover");
+                // element.classList.add("selected");
+            });
+            element.addEventListener("mouseleave", function () {
+                // element.classList.remove("selected");
+                element.getElementsByClassName("select-box")[0].classList.remove("select-box-hover");
             });
         }
 

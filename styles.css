@@ -15,7 +15,12 @@
     display: inline-block;
 }
 
-.select-box:hover {
+/* .game-line:hover {
+
+    
+} */
+
+.select-box-hover {
     border: 10px solid #000;
     width: 30px;
     height: 30px;
@@ -29,9 +34,12 @@
 }
 
 .game-line {
-    width: 100vw;
+    width: auto;
 }
 
+.selected {
+    background-color: orange;
+}
 
 body {
     height: 100vh;
