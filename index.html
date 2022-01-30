@@ -2,6 +2,7 @@
 
 <head>
     <script src="./anime.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico">
     <link rel="stylesheet" href="./styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -34,7 +35,7 @@
                 <h1>BramseS</h1>
             </div>
         </div>
-        <button id="start-button" onclick="start()">Play Audio</button>
+        <button id="start-button" onclick="startBGMusic()"><span id="audio-verb">Play</span> Dearly Beloved</button>
         <div id="menu">
             <div class='game-line' onclick="openurl('portfolio')">
                 <div class='select-box'></div>
@@ -98,10 +99,16 @@
             });
         }
 
-        function start () {
-            bgMusic.play();
-            bgMusic.loop = true;
-            bgMusic.volume = 0.75
+        function startBGMusic () {
+            if (!bgMusic.paused) {
+                bgMusic.pause();
+                document.getElementById("audio-verb").innerText = "Play";
+            } else {
+                bgMusic.play();
+                bgMusic.loop = true;
+                bgMusic.volume = 0.5;
+                document.getElementById("audio-verb").innerText = "Pause";
+            }
         }
 
         function openurl (url) {
@@ -127,6 +134,7 @@
             var audio = document.getElementsByTagName("audio")[0];
             if (audio.paused) {
                 audio.play();
+                
             } else {
                 audio.currentTime = 0
             }
